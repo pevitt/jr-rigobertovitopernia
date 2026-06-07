@@ -404,6 +404,41 @@ p{ text-wrap: pretty; }
   display:flex; align-items:center; justify-content:center; text-align:center;
   position: relative; overflow: hidden;
 }
+/* Portada generada en CSS para libro 2 */
+.cover-libro2{
+  background: linear-gradient(160deg, #b8e8f2 0%, #72cadf 55%, #4eb0cc 100%) !important;
+  flex-direction: column;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+.cover-libro2 .cv-title{
+  font-family: Georgia, serif;
+  font-size: 11.5px; font-weight: bold; color: #fff;
+  text-align: center; padding: 9px 6px 5px;
+  line-height: 1.25;
+  text-shadow: 1px 1px 0 #173344, -1px -1px 0 #173344,
+               1px -1px 0 #173344, -1px 1px 0 #173344;
+  letter-spacing: 0.01em; flex-shrink:0;
+}
+.cover-libro2 .cv-photo{
+  border: 3px solid #1b3a5c;
+  margin: 0 8px;
+  flex: 1;
+  width: calc(100% - 16px);
+  background: url('assets/iglesia-montana.png') center 18% / cover no-repeat;
+  min-height: 0;
+}
+.cover-libro2 .cv-author{
+  font-family: Georgia, serif;
+  font-size: 8.5px; font-style: italic; font-weight: bold;
+  color: #1b3a5c; padding: 5px 4px 4px;
+  text-align: center;
+  border-top: 1.5px solid #1b3a5c;
+  width: 100%; background: rgba(221,211,174,0.85);
+  flex-shrink:0; line-height:1.4;
+}
 .book .cover image-slot{ width:100%; height:100%; }
 .book .cover .ph{
   font-family: var(--mono); font-size: 10.5px; letter-spacing:0.1em;

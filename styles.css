@@ -567,7 +567,7 @@ form.cform{ display:grid; gap: 16px; }
   justify-content: flex-end;
 }
 @media (max-width: 760px){ .firma-wrap{ margin-top: 24px; } }
-.firma-svg{ width: 290px; height: auto; overflow: visible; margin-right: -90px;}
+.firma-svg{ width: 235px; height: auto; overflow: visible; margin-right: -68px;}
 .firma-stroke{
   fill: none;
   stroke: var(--forest);

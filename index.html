@@ -92,6 +92,30 @@
         <p>Nunca me fui, aquí me quedé, adorando mi terruño, caminando por sus calles con felicidad y orgullo, y aquí, pueblo querido, me quedaré por siempre. Observo la neblina que todas las tardes arropa nuestro pueblo, nos cubre como el manto de nuestra madre protegiendo a sus hijos.</p>
         <p>Con amor y mucha esperanza logré hacer estos apuntes, recopilando información valiosa para que, quien los lea, los reciba en su mente como un regalo de la historia de un hombre que tuvo la suerte de nacer, crecer, formar una familia y ser el primer alcalde de esta meseta pegajosa de amor y amistad. Seboruco, tierra bendecida de paz y de gracia.</p>
       </div>
+      <figure class="firma-wrap" aria-hidden="true">
+        <svg class="firma-svg" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+          <!-- 0: gancho izquierdo -->
+          <path class="firma-stroke" data-order="0" d="M 20,163 C 42,169 62,167 80,171"/>
+          <!-- 1: R — backbone J + sombrero baja a la izquierda (sin V) -->
+          <path class="firma-stroke" data-order="1" d="M 82,173 C 78,161 76,145 76,129 C 76,113 77,99 78,87 C 74,92 66,96 63,97"/>
+          <!-- 2: R — arco superior + pierna diagonal -->
+          <path class="firma-stroke" data-order="2" d="M 78,87 C 84,79 94,75 104,75 C 116,75 124,83 124,93 C 124,103 118,111 108,113 C 110,119 116,131 118,143 C 118,153 116,161 114,163"/>
+          <!-- 3: "3" dos humps -->
+          <path class="firma-stroke" data-order="3" d="M 130,105 C 140,95 163,95 165,107 C 167,119 152,123 145,126 C 153,129 166,136 166,148 C 166,159 148,162 134,153"/>
+          <!-- 4: H trazo izquierdo -->
+          <path class="firma-stroke" data-order="4" d="M 180,101 L 180,145"/>
+          <!-- 5: H crossbar -->
+          <path class="firma-stroke" data-order="5" d="M 180,123 L 202,123"/>
+          <!-- 6: H trazo derecho -->
+          <path class="firma-stroke" data-order="6" d="M 202,101 L 202,145"/>
+          <!-- 7: e minúscula -->
+          <path class="firma-stroke" data-order="7" d="M 202,122 L 218,122 C 227,122 232,115 228,109 C 224,103 213,106 211,114 C 209,123 215,134 226,133"/>
+          <!-- 8: óvalo — elipse horizontal, espacio a la izquierda, e pegada al borde derecho -->
+          <path class="firma-stroke" data-order="8" d="M 240,104 C 240,63 193,30 134,30 C 75,30 28,63 28,104 C 28,145 75,178 134,178 C 193,178 240,145 240,118"/>
+          <!-- punto -->
+          <circle class="firma-stroke" cx="250" cy="128" r="2.8"/>
+        </svg>
+      </figure>
       <p class="attrib">— <b>Rigoberto Vito</b>, a sus 81 años</p>
     </article>
   </div>
@@ -403,6 +427,25 @@
   setTimeout(revealInView, 300);
   // Absolute fallback: after 1.2s make sure nothing is stuck hidden.
   setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')), 1200);
+
+  // Firma animada
+  (function(){
+    const paths = document.querySelectorAll('.firma-stroke:not(circle)');
+    const dot   = document.querySelector('circle.firma-stroke');
+    paths.forEach(p=>{ const l=p.getTotalLength(); p.style.strokeDasharray=l; p.style.strokeDashoffset=l; });
+    function play(){
+      paths.forEach(p=>{
+        const delay = parseInt(p.dataset.order||0) * 0.20;
+        p.style.animation = `firma-draw 0.65s ease ${delay}s forwards`;
+      });
+      if(dot) dot.style.animation = `firma-dot 0.2s ease ${paths.length*0.20}s forwards`;
+    }
+    const ms = document.querySelector('.manuscript');
+    if(!ms) return;
+    if(ms.classList.contains('in')){ play(); return; }
+    const mo = new MutationObserver(()=>{ if(ms.classList.contains('in')){ play(); mo.disconnect(); } });
+    mo.observe(ms,{ attributes:true, attributeFilter:['class'] });
+  })();
 </script>
 </body>
 </html>

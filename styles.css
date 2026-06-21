@@ -559,3 +559,26 @@ form.cform{ display:grid; gap: 16px; }
 .reveal{ opacity:0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in{ opacity:1; transform: none; }
 @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; } }
+
+/* firma animada */
+.firma-wrap{
+  margin-top: -150px;
+  display: flex;
+  justify-content: flex-end;
+}
+@media (max-width: 760px){ .firma-wrap{ margin-top: 24px; } }
+.firma-svg{ width: 290px; height: auto; overflow: visible; margin-right: -90px;}
+.firma-stroke{
+  fill: none;
+  stroke: var(--forest);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+circle.firma-stroke{ fill: var(--forest); stroke: none; opacity: 0; }
+@keyframes firma-draw{ to{ stroke-dashoffset: 0; } }
+@keyframes firma-dot{ to{ opacity: 1; } }
+@media (prefers-reduced-motion: reduce){
+  .firma-stroke{ stroke-dashoffset: 0 !important; animation: none !important; }
+  circle.firma-stroke{ opacity: 1 !important; animation: none !important; }
+}

@@ -105,8 +105,13 @@ p{ text-wrap: pretty; }
   height: 64px;
 }
 .brand{
-  display:flex; align-items:baseline; gap:12px;
+  display:flex; align-items:center; gap:12px;
   text-decoration:none;
+}
+.church-icon{
+  height: 25px; width: auto;
+  color: var(--forest);
+  flex-shrink: 0;
 }
 .brand .mark{
   font-family: var(--mono); font-size: 11px; letter-spacing:0.2em;
